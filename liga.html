@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#111216">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="preload" href="/assets/fuentes/bricolage-800.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/site.css?v=2">
+<title>Te han invitado a una liga · Foso</title>
+<meta name="description" content="Únete a una liga de Foso con tus amigos.">
+<meta name="robots" content="noindex">
+<style>
+  .invite { text-align: center; padding: 48px 0 120px; max-width: 520px; }
+  .invite .tiles { display: inline-flex; gap: 8px; margin-bottom: 32px; }
+  .invite .tiles .tile { width: 52px; height: 52px; font-size: 26px; border-radius: 14px; }
+  .invite h1 { font-family: var(--display); font-weight: 800; font-size: clamp(34px, 6vw, 48px); line-height: 1.04; letter-spacing: -0.03em; margin: 0 0 16px; }
+  .invite p { color: var(--muted); margin: 0 auto 32px; }
+  .code {
+    display: inline-flex; align-items: center; gap: 16px;
+    background: var(--card); border: 1px solid var(--card-hi);
+    border-radius: 18px; padding: 14px 14px 14px 24px; margin-bottom: 40px;
+  }
+  .code output { font-family: var(--mono); font-size: 26px; font-weight: 700; letter-spacing: 0.08em; }
+  .steps { text-align: left; color: var(--muted); padding-left: 22px; margin: 0 auto; max-width: 400px; }
+  .steps li { margin: 10px 0; }
+  .steps strong { color: var(--text); font-weight: 500; }
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="/" aria-label="Foso, inicio">
+      <span class="brand-tiles" aria-hidden="true"><span class="t-lime"></span><span class="t-blue"></span><span class="t-amber"></span><span class="t-coral"></span></span>
+      <span class="brand-name">Foso</span>
+    </a>
+  </div>
+</header>
+<main class="wrap invite">
+  <span class="tiles" aria-hidden="true"><span class="tile t-lime">L</span><span class="tile t-blue">I</span><span class="tile t-amber">G</span><span class="tile t-coral" style="transform: rotate(12deg)">A</span></span>
+  <h1>Te han invitado a una liga</h1>
+  <p>En una liga de Foso jugáis todos la misma partida cada día. Gana quien más acierta antes de quedarse sin comodines.</p>
+
+  <div class="code" id="bloque-codigo" hidden>
+    <output id="codigo" aria-label="Código de la liga"></output>
+    <button class="btn btn-lime btn-sm" id="copiar" type="button">Copiar</button>
+  </div>
+
+  <ol class="steps">
+    <li>Instala Foso en tu móvil. Llega muy pronto a iPhone y Android.</li>
+    <li>Ábrelo y ve a <strong>Ligas → Unirme con un código</strong>.</li>
+    <li>Escribe el código y a jugar.</li>
+  </ol>
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <span>© 2026 Foso</span>
+    <nav aria-label="Información legal">
+      <a href="/privacidad">Privacidad</a>
+      <a href="/borrar-cuenta">Borrar cuenta</a>
+      <a href="mailto:foso.app.dev@gmail.com">Contacto</a>
+    </nav>
+  </div>
+</footer>
+<script>
+(function () {
+  // El código llega en la ruta (/liga/ABC-123) o como parámetro (?c=ABC123).
+  // Solo se aceptan letras y números: nunca se pinta nada de la URL sin filtrar.
+  var desdeRuta = decodeURIComponent(location.pathname.split('/liga/')[1] || '');
+  var desdeParam = new URLSearchParams(location.search).get('c') || '';
+  var limpio = (desdeRuta || desdeParam).toUpperCase().replace(/[^A-Z0-9]/g, '').slice(0, 6);
+  if (limpio.length !== 6) return;
+  var codigo = limpio.slice(0, 3) + '-' + limpio.slice(3);
+
+  document.getElementById('codigo').textContent = codigo;
+  document.getElementById('bloque-codigo').hidden = false;
+
+  var boton = document.getElementById('copiar');
+  boton.addEventListener('click', function () {
+    navigator.clipboard.writeText(codigo).then(function () {
+      boton.textContent = 'Copiado';
+      setTimeout(function () { boton.textContent = 'Copiar'; }, 2000);
+    });
+  });
+})();
+</script>
+</body>
+</html>
