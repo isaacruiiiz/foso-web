@@ -3,13 +3,22 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Foso · Acierta o al foso</title>
-<meta name="description" content="Preguntas con la respuesta a medio escribir: completa las letras que faltan antes de que acabe el tiempo. Programa del día, ligas con amigos, Arenas 1 contra 1 y Plató para jugar en la tele.">
+<title>Foso · Juego de preguntas gratis para jugar con amigos y en familia</title>
+<meta name="description" content="Juego de preguntas gratis tipo concurso de la tele: adivina la palabra con las letras que faltan antes de que acabe el tiempo. Programa diario, ligas con amigos, duelos 1 contra 1 y modo tele para jugar en familia.">
+<meta name="keywords" content="juego de preguntas, juegos de preguntas y respuestas, trivial online, concurso de preguntas, juego de palabras, juego de letras, juegos para jugar en familia, juegos para jugar con amigos, quiz en español">
+<link rel="canonical" href="https://foso.pages.dev/">
+<link rel="alternate" hreflang="es" href="https://foso.pages.dev/">
+<meta name="robots" content="index, follow, max-image-preview:large">
 <meta name="theme-color" content="#111216">
-<meta property="og:title" content="Foso">
-<meta property="og:description" content="Acierta o al foso. El juego de las letras que faltan.">
+<meta property="og:title" content="Foso · Acierta o al foso">
+<meta property="og:site_name" content="Foso">
+<meta property="og:locale" content="es_ES">
+<meta property="og:description" content="El juego de preguntas de las letras que faltan. Gratis, en español y para jugar con amigos, en familia o en la tele.">
 <meta property="og:url" content="https://foso.pages.dev/">
 <meta property="og:image" content="https://foso.pages.dev/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Logo de Foso con el lema Acierta o al foso">
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
@@ -54,6 +63,8 @@
   }
   .hero .lead { position: relative; color: var(--muted); font-size: clamp(18px, 2.2vw, 21px); max-width: 46ch; margin: 0 auto 40px; text-wrap: pretty; }
   .actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+  .kicker { position: relative; color: var(--amber); font-size: 12px; margin-bottom: 18px; }
+  .soon { position: relative; margin: 18px 0 0; font-size: 14px; color: var(--muted); }
 
   /* --- Demostración ----------------------------------------------------- */
   .split { display: flex; flex-wrap: wrap; gap: 56px; align-items: center; padding: 48px 0 120px; }
@@ -150,12 +161,73 @@
   @media (max-width: 640px) { .remote { display: none; } .stage { padding-bottom: 0; } }
   .remote span { margin-top: 6px; padding: 5px 10px; border-radius: 8px; background: var(--lime); color: var(--lime-ink); font-size: 10px; font-weight: 700; }
 
+  /* --- Preguntas frecuentes -------------------------------------------------- */
+  .faq { padding: 40px 0 120px; }
+  .faq details { max-width: 820px; }
+  .faq details { border-top: 1px solid var(--card-hi); }
+  .faq details:last-of-type { border-bottom: 1px solid var(--card-hi); }
+  .faq summary {
+    list-style: none; cursor: pointer; padding: 22px 40px 22px 0; position: relative;
+    font-size: 20px; font-weight: 600; letter-spacing: -0.01em;
+  }
+  .faq summary::-webkit-details-marker { display: none; }
+  .faq summary::after {
+    content: "+"; position: absolute; right: 4px; top: 50%; transform: translateY(-50%);
+    width: 28px; height: 28px; border-radius: 8px; background: var(--card-hi); color: var(--lime);
+    display: flex; align-items: center; justify-content: center; font-family: var(--mono); font-size: 18px;
+  }
+  .faq details[open] summary::after { content: "–"; }
+  .faq details p { margin: 0 0 22px; color: var(--muted); max-width: 64ch; }
+
   /* --- Cierre ------------------------------------------------------------- */
   .closing { text-align: center; padding: 40px 0 128px; }
   .closing .tile { width: 64px; height: 64px; font-size: 32px; border-radius: 17px; transform: rotate(14deg); margin-bottom: 32px; }
   .closing p { color: var(--muted); margin: 0 auto 32px; max-width: 40ch; }
 </style>
 <script>document.documentElement.classList.add('js');</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://foso.pages.dev/#web",
+      "url": "https://foso.pages.dev/",
+      "name": "Foso",
+      "inLanguage": "es"
+    },
+    {
+      "@type": ["VideoGame", "SoftwareApplication"],
+      "@id": "https://foso.pages.dev/#juego",
+      "name": "Foso",
+      "url": "https://foso.pages.dev/",
+      "description": "Juego de preguntas tipo concurso: adivina la palabra con las letras que faltan antes de que acabe el tiempo. Programa diario, ligas con amigos, duelos 1 contra 1 y modo tele para jugar en familia.",
+      "image": "https://foso.pages.dev/assets/og-image.png",
+      "genre": ["Preguntas y respuestas", "Juego de palabras", "Juego de mesa", "Familiar"],
+      "gamePlatform": ["Android", "iOS", "Android TV", "Navegador web"],
+      "operatingSystem": "Android, iOS, Web",
+      "applicationCategory": "GameApplication",
+      "inLanguage": "es",
+      "playMode": ["SinglePlayer", "MultiPlayer"],
+      "numberOfPlayers": { "@type": "QuantitativeValue", "minValue": 1, "maxValue": 8 },
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" },
+      "email": "foso.app.dev@gmail.com"
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://foso.pages.dev/#preguntas",
+      "mainEntity": [
+        { "@type": "Question", "name": "¿Qué es Foso?", "acceptedAnswer": { "@type": "Answer", "text": "Un juego de preguntas en español en el que la respuesta aparece con algunas letras destapadas y tienes que completar el resto antes de que acabe el tiempo. Cada fallo te quita un comodín y, sin comodines, caes al foso." } },
+        { "@type": "Question", "name": "¿Es gratis?", "acceptedAnswer": { "@type": "Answer", "text": "Sí. Foso es gratis en el navegador y lo será en iPhone y Android. En el móvil hay anuncios discretos que se pueden quitar con un pago único." } },
+        { "@type": "Question", "name": "¿Se puede jugar en familia o con amigos?", "acceptedAnswer": { "@type": "Answer", "text": "Sí. Con el modo Plató pones Foso en la tele y hasta ocho personas juegan a la vez desde su móvil. También puedes crear una liga con tus amigos y jugar la misma partida cada día." } },
+        { "@type": "Question", "name": "¿Se parece a los concursos de preguntas de la tele?", "acceptedAnswer": { "@type": "Answer", "text": "Esa es la idea: duelos contrarreloj, letras que se destapan, comodines y una final. Pero sin esperar a que te elijan: juegas cuando quieras desde el móvil, el navegador o la tele." } },
+        { "@type": "Question", "name": "¿Sirve para España y Latinoamérica?", "acceptedAnswer": { "@type": "Answer", "text": "Sí. Las preguntas están en un español neutro y evitan palabras que cambian de un país a otro." } },
+        { "@type": "Question", "name": "¿Puedo jugar sin instalar nada?", "acceptedAnswer": { "@type": "Answer", "text": "Sí, en foso.pages.dev/jugar. Para el modo tele, abre foso.pages.dev/tele en el navegador del ordenador o de la tele." } }
+      ]
+    }
+  ]
+}
+</script>
 </head>
 <body>
 
@@ -169,7 +241,8 @@
       <a href="#como">Cómo se juega</a>
       <a href="#modos">Modos</a>
       <a href="#plato">En la tele</a>
-      <a class="btn btn-lime btn-sm" href="#pronto">Muy pronto</a>
+      <a href="#preguntas">Preguntas</a>
+      <a class="btn btn-lime btn-sm" href="/jugar/">Jugar gratis</a>
     </nav>
   </div>
 </header>
@@ -183,21 +256,23 @@
         <span class="tile t-amber">S</span>
         <span class="pit-slot"><span class="pit"></span><span class="tile t-coral falling">O</span></span>
       </div>
+      <p class="eyebrow kicker">EL JUEGO DE PREGUNTAS DE LAS LETRAS QUE FALTAN</p>
       <h1 id="titulo">Acierta o al foso.</h1>
-      <p class="lead">Preguntas con la respuesta a medio escribir: algunas letras ya están puestas y tú completas el resto antes de que acabe el tiempo. Cada fallo te acerca un poco más al borde.</p>
+      <p class="lead">Una pregunta, unas pocas letras y la cuenta atrás corriendo. Completa la palabra antes de que se acabe el tiempo. Cada fallo te acerca un poco más al borde.</p>
       <div class="actions">
-        <a class="btn btn-lime" href="#pronto">Muy pronto en iPhone y Android</a>
-        <a class="btn btn-ghost" href="#demo">Prueba una pregunta</a>
+        <a class="btn btn-lime" href="/jugar/">Jugar gratis en el navegador</a>
+        <a class="btn btn-ghost" href="#demo">Probar una pregunta aquí</a>
       </div>
+      <p class="soon">App para iPhone y Android muy pronto</p>
     </div>
   </section>
 
   <section class="wrap split" id="demo" aria-labelledby="titulo-demo">
     <div>
       <p class="eyebrow" style="color: var(--amber)">PRUÉBALO AQUÍ</p>
-      <h2 class="big" id="titulo-demo" style="max-width: 14ch">Las letras que faltan, las pones tú.</h2>
-      <p class="lead-muted">Cada pregunta llega con unas cuantas letras destapadas. Cuantas menos, más difícil. Escribe las que faltan y, si la palabra es exacta, cuenta sola: no hace falta darle a nada.</p>
-      <p class="lead-muted">Las tildes no cuentan. Lo que cuenta es saberlo antes de que la barra llegue a cero.</p>
+      <h2 class="big" id="titulo-demo" style="max-width: 14ch">Te damos unas letras. Tú pones el resto.</h2>
+      <p class="lead-muted">Cuantas menos letras destapadas, más difícil. Escribe las que faltan y, si la palabra es correcta, cuenta sola: no hay que pulsar nada.</p>
+      <p class="lead-muted">Las tildes no cuentan. El tiempo, sí.</p>
     </div>
     <div class="phone" id="juego">
       <div class="clock-row">
@@ -218,34 +293,34 @@
   </section>
 
   <section class="wrap rules" id="como" aria-labelledby="titulo-como">
-    <h2 class="big" id="titulo-como">Tres reglas y un foso.</h2>
+    <h2 class="big" id="titulo-como">Tres reglas. Un foso.</h2>
     <div class="grid-3">
       <div class="rule">
         <span class="tile t-blue" aria-hidden="true">1</span>
         <h3>Mira las pistas</h3>
-        <p>La pregunta trae algunas letras de la respuesta ya colocadas en su sitio.</p>
+        <p>Cada respuesta llega con algunas letras ya colocadas en su sitio.</p>
       </div>
       <div class="rule">
         <span class="tile t-amber" aria-hidden="true">2</span>
-        <h3>Completa contrarreloj</h3>
-        <p>Tienes unos segundos para escribir el resto. Si te atascas, puedes pasar y probar con otra.</p>
+        <h3>Rellena contrarreloj</h3>
+        <p>Unos segundos para escribir el resto. Si te atascas, pasa y prueba con otra.</p>
       </div>
       <div class="rule">
         <span class="tile t-coral" aria-hidden="true" style="transform: rotate(12deg)">3</span>
-        <h3>No te caigas</h3>
-        <p>Fallar te quita un comodín. Cuando te quedas sin ninguno, al foso.</p>
+        <h3>Que no te tiren</h3>
+        <p>Cada fallo te quita un comodín. Sin comodines, al foso.</p>
       </div>
     </div>
   </section>
 
   <section class="wrap modes" id="modos" aria-labelledby="titulo-modos">
-    <h2 class="big" id="titulo-modos" style="max-width: 18ch">Un rato o toda la tarde.</h2>
-    <p class="lead-muted" style="max-width: 50ch">Un programa nuevo cada día para cinco minutos, y Arenas y ligas para cuando no quieres parar.</p>
+    <h2 class="big" id="titulo-modos" style="max-width: 18ch">Cinco minutos o toda la tarde.</h2>
+    <p class="lead-muted" style="max-width: 50ch">Un programa nuevo cada día para cuando vas con prisa. Arenas y ligas para cuando no quieres parar.</p>
     <div class="grid-2">
       <article class="mode">
         <p class="eyebrow" style="color: var(--lime); font-size: 12px">CADA DÍA</p>
         <h3>Programa del día</h3>
-        <p>Diez rivales en duelo y una final contrarreloj. El mismo programa para todos: compara tu resultado sin destripar las respuestas.</p>
+        <p>Diez rivales, una final contrarreloj y el mismo programa para todo el mundo. Comparte tu resultado sin destripar ni una respuesta.</p>
         <div class="squares" role="img" aria-label="Ejemplo de resultado: seis aciertos, uno con pase y una caída">
           <span class="o"></span><span class="o"></span><span class="p"></span><span class="o"></span><span class="o"></span><span class="o"></span><span class="x"></span><span></span><span></span><span></span>
         </div>
@@ -253,13 +328,13 @@
       <article class="mode">
         <p class="eyebrow" style="color: var(--amber); font-size: 12px">DE VEZ EN CUANDO</p>
         <h3>Entre tres</h3>
-        <p>Se destapan tres palabras o fechas al empezar. Cada pregunta se responde con una de ellas: ¿cuál toca?</p>
+        <p>Al empezar se destapan tres palabras o fechas, y cada pregunta se responde con una de ellas. Parece fácil hasta que dudas.</p>
         <div class="chips"><span class="chip">1492</span><span class="chip on">1969</span><span class="chip">1989</span></div>
       </article>
       <article class="mode">
         <p class="eyebrow" style="color: var(--blue); font-size: 12px">1 CONTRA 1</p>
         <h3>Arenas</h3>
-        <p>Duelos por copas contra gente de tu nivel. Sube del Sótano a la Gran Final, desbloquea fichas y títulos y empieza de nuevo cada temporada.</p>
+        <p>Duelos 1 contra 1 por copas contra gente de tu nivel. Sube del Sótano a la Gran Final y desbloquea fichas y títulos por el camino.</p>
         <div class="chips path">
           <span class="chip">Sótano</span><span aria-hidden="true">›</span>
           <span class="chip">Camerino</span><span aria-hidden="true">›</span>
@@ -270,7 +345,7 @@
       <article class="mode">
         <p class="eyebrow" style="color: var(--coral-soft); font-size: 12px">CON AMIGOS</p>
         <h3>Ligas</h3>
-        <p>Crea una liga, pasa el código y cada día todos juegan la misma partida. Gana quien más acierta antes de quedarse sin comodines.</p>
+        <p>Crea una liga, comparte el código y jugad todos la misma partida cada día. Gana quien más aguanta antes de quedarse sin comodines.</p>
         <ol class="board" aria-label="Ejemplo de clasificación">
           <li><span>1 · Marta</span><span>23</span></li>
           <li><span>2 · Tú</span><span>19</span></li>
@@ -283,13 +358,14 @@
   <section class="wrap split" id="plato" aria-labelledby="titulo-plato">
     <div>
       <p class="eyebrow" style="color: var(--amber)">PLATÓ</p>
-      <h2 class="big" id="titulo-plato" style="max-width: 14ch">El concurso, en tu salón.</h2>
-      <p class="lead-muted">Abre Foso en la tele y aparece un código. Cada uno se une con su móvil y todos responden a la vez. Hasta ocho jugadores, sin mandos ni cables.</p>
+      <h2 class="big" id="titulo-plato" style="max-width: 14ch">El concurso, en el salón de casa.</h2>
+      <p class="lead-muted">Pon Foso en la tele y aparece un código. Cada uno se une con su móvil y respondéis todos a la vez. Hasta ocho jugadores, sin mandos ni cables: el plan perfecto para jugar en familia o con amigos.</p>
       <ul class="checks">
         <li>Android TV, Google TV y Fire TV</li>
         <li>O cualquier tele con un navegador</li>
         <li>Quien no tenga la app entra desde el navegador del móvil</li>
       </ul>
+      <p style="margin: 28px 0 0"><a class="btn btn-ghost" href="/tele">Abrir el Plató en esta pantalla</a></p>
     </div>
     <div class="stage">
       <div class="tv" role="img" aria-label="Una tele con el código de sala KJRX y los jugadores que se han unido">
@@ -306,11 +382,42 @@
     </div>
   </section>
 
+  <section class="wrap faq" id="preguntas" aria-labelledby="titulo-faq">
+    <h2 class="big" id="titulo-faq">Preguntas frecuentes</h2>
+    <details>
+      <summary>¿Qué es Foso?</summary>
+      <p>Un juego de preguntas en español en el que la respuesta aparece con algunas letras destapadas y tienes que completar el resto antes de que acabe el tiempo. Cada fallo te quita un comodín y, sin comodines, caes al foso.</p>
+    </details>
+    <details>
+      <summary>¿Es gratis?</summary>
+      <p>Sí. Foso es gratis en el navegador y lo será en iPhone y Android. En el móvil hay anuncios discretos que se pueden quitar con un pago único.</p>
+    </details>
+    <details>
+      <summary>¿Se puede jugar en familia o con amigos?</summary>
+      <p>Sí. Con el modo Plató pones Foso en la tele y hasta ocho personas juegan a la vez desde su móvil. También puedes crear una liga con tus amigos y jugar la misma partida cada día.</p>
+    </details>
+    <details>
+      <summary>¿Se parece a los concursos de preguntas de la tele?</summary>
+      <p>Esa es la idea: duelos contrarreloj, letras que se destapan, comodines y una final. Pero sin esperar a que te elijan: juegas cuando quieras desde el móvil, el navegador o la tele.</p>
+    </details>
+    <details>
+      <summary>¿Sirve para España y Latinoamérica?</summary>
+      <p>Sí. Las preguntas están en un español neutro y evitan palabras que cambian de un país a otro.</p>
+    </details>
+    <details>
+      <summary>¿Puedo jugar sin instalar nada?</summary>
+      <p>Sí, en <a href="/jugar/">foso.pages.dev/jugar</a>. Para el modo tele, abre <a href="/tele">foso.pages.dev/tele</a> en el navegador del ordenador o de la tele.</p>
+    </details>
+  </section>
+
   <section class="wrap closing" id="pronto" aria-labelledby="titulo-cierre">
     <span class="tile t-coral" aria-hidden="true">O</span>
     <h2 class="big" id="titulo-cierre">¿Te atreves con el borde?</h2>
-    <p>Foso llega muy pronto a iPhone y Android, gratis. Si quieres probarlo antes que nadie, escríbenos.</p>
-    <a class="btn btn-lime" href="mailto:foso.app.dev@gmail.com?subject=Quiero%20probar%20Foso">Quiero probarlo</a>
+    <p>Juega gratis desde el navegador. La app para iPhone y Android llega muy pronto: si quieres probarla antes que nadie, escríbenos.</p>
+    <div class="actions">
+      <a class="btn btn-lime" href="/jugar/">Jugar ahora</a>
+      <a class="btn btn-ghost" href="mailto:foso.app.dev@gmail.com?subject=Quiero%20probar%20la%20app%20de%20Foso">Quiero probar la app</a>
+    </div>
   </section>
 </main>
 

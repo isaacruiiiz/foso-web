@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /liga/
+Disallow: /sala/
+
+Sitemap: https://foso.pages.dev/sitemap.xml
