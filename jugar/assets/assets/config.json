@@ -1,0 +1,27 @@
+{
+  "supabaseUrl": "https://zydpfnidvsmmsxgfakcu.supabase.co",
+  "supabaseKey": "sb_publishable_Wty49hlHPHqHKXDFRisbTw_v45s_yzb",
+  "webUrl": "https://foso.pages.dev",
+  "googleWebClientId": "679258469311-4f3ert3c03ennglu6gt8l6n3ojvclr8o.apps.googleusercontent.com",
+  "googleIosClientId": "679258469311-meego1gqdivnqhli7bimirta0quecut0.apps.googleusercontent.com",
+  "admob": {
+    "androidInterstitial": "ca-app-pub-2175482898912542/5115681529",
+    "androidRewarded": "ca-app-pub-2175482898912542/1752905605",
+    "androidNative": "ca-app-pub-2175482898912542/8126742269",
+    "iosInterstitial": "ca-app-pub-2175482898912542/3257558967",
+    "iosRewarded": "ca-app-pub-2175482898912542/1256327563",
+    "iosNative": "ca-app-pub-2175482898912542/4812429193"
+  },
+  "admobPruebas": {
+    "androidInterstitial": "ca-app-pub-3940256099942544/1033173712",
+    "androidRewarded": "ca-app-pub-3940256099942544/5224354917",
+    "androidNative": "ca-app-pub-3940256099942544/2247696110",
+    "iosInterstitial": "ca-app-pub-3940256099942544/4411468910",
+    "iosRewarded": "ca-app-pub-3940256099942544/1712485313",
+    "iosNative": "ca-app-pub-3940256099942544/3986624511"
+  },
+  "productos": {
+    "sinAnuncios": "foso_sin_anuncios",
+    "pase": "foso_pase_temporada"
+  }
+}

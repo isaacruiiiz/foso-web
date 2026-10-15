@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <base href="/jugar/">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="description" content="Foso: adivina la palabra con las letras que tienes antes de que se acabe el tiempo. Programa del día, ligas con amigos, Arenas 1 contra 1 y Plató para jugar en la tele.">
+  <meta name="theme-color" content="#111216">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="Foso">
+  <meta property="og:title" content="Foso · el juego de las letras">
+  <meta property="og:description" content="Un programa nuevo cada día. Juega solo, con amigos o en la tele.">
+  <link rel="apple-touch-icon" href="icons/Icon-192.png">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="manifest" href="manifest.json">
+  <title>Foso</title>
+  <style>
+    html, body { margin: 0; height: 100%; background: #111216; }
+    #carga { position: fixed; inset: 0; display: flex; align-items: center; justify-content: center; gap: 10px; }
+    #carga span { width: 44px; height: 44px; border-radius: 11px; animation: b 1s ease-in-out infinite; box-shadow: 0 3px 0 rgba(0,0,0,.25); }
+    #carga span:nth-child(1) { background: #B6F25C; }
+    #carga span:nth-child(2) { background: #6E8BFF; animation-delay: .12s; }
+    #carga span:nth-child(3) { background: #FFC24B; animation-delay: .24s; }
+    #carga span:nth-child(4) { background: #FF6A57; animation-delay: .36s; }
+    @keyframes b { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-14px); } }
+  </style>
+</head>
+<body>
+  <div id="carga"><span></span><span></span><span></span><span></span></div>
+  <script>
+    window.addEventListener('flutter-first-frame', function () {
+      var c = document.getElementById('carga'); if (c) c.remove();
+    });
+  </script>
+  <script src="flutter_bootstrap.js" async></script>
+</body>
+</html>

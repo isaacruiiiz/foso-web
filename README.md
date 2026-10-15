@@ -14,7 +14,7 @@ Sin compilación ni dependencias: lo que hay en esta carpeta es lo que se public
 
 ## Antes de publicar
 
-- Si el dominio no acaba siendo `foso-app.pages.dev`, cambia `og:url` y `og:image` en `index.html`.
+- Si el dominio no acaba siendo `foso.pages.dev`, cambia `og:url` y `og:image` en `index.html`.
 - Pon esa dirección como `webUrl` en `assets/config.json` de la app y como *Site URL* en Supabase.
 
 ## Estructura
