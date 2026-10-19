@@ -1,4 +1,4 @@
 /liga/*      /liga.html              200
-/tele        /tele/?tv              302
-/sala/:code  /tele/?sala=:code      302
-/tele/*     /tele/index.html       200
+/tele        /jugar/?tv              302
+/sala/:code  /jugar/?sala=:code      302
+/jugar/*     /jugar/index.html       200
