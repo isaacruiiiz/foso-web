@@ -19,6 +19,7 @@ h1,h2,.display{font-family:'Bricolage',system-ui,sans-serif;font-weight:800;lett
 .mono{font-family:'GeistMono',ui-monospace,monospace}
 a{color:var(--lime)}
 button{font:inherit;cursor:pointer}
+:focus-visible{outline:2px solid var(--lime);outline-offset:2px}
 .layout{display:flex;flex-wrap:wrap;min-height:100vh}
 nav{flex:1 1 220px;max-width:260px;padding:24px 16px;border-right:1px solid var(--hi);display:flex;flex-direction:column;gap:6px}
 .brand{display:flex;align-items:center;gap:8px;padding:0 8px 18px}
@@ -27,6 +28,7 @@ nav{flex:1 1 220px;max-width:260px;padding:24px 16px;border-right:1px solid var(
 .navitem.on{background:var(--hi);color:var(--text);font-weight:600}
 .badge{margin-left:auto;height:20px;min-width:20px;padding:0 7px;border-radius:10px;background:var(--coral);color:#2E0904;font-size:11px;display:flex;align-items:center;justify-content:center}
 main{flex:999 1 560px;min-width:0;padding:28px 32px 40px;display:flex;flex-direction:column;gap:20px}
+main>section{display:flex;flex-direction:column;gap:20px}
 @media (max-width:700px){nav{max-width:none;border-right:0;border-bottom:1px solid var(--hi);flex-direction:row;flex-wrap:wrap;align-items:center}.brand{padding:0 8px 0 0}main{padding:20px 16px}}
 .top{display:flex;flex-wrap:wrap;gap:12px;align-items:flex-end}
 .top>div{flex:1 1 260px}
@@ -38,9 +40,10 @@ h1{margin:0;font-size:32px}
 .kpi{background:var(--card);border-radius:16px;padding:16px;display:flex;flex-direction:column;gap:4px}
 .kpi span{font-size:13px;color:var(--muted)}.kpi b{font-family:'Bricolage',sans-serif;font-size:30px}
 .kpi.hot{background:var(--coralbg);border:1px solid #5A2A23}.kpi.hot span{color:#FFB3A7}.kpi.hot b{color:var(--coralsoft)}
-.filters{display:flex;flex-wrap:wrap;gap:6px}
+.filters{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
 .chip{height:34px;padding:0 14px;border-radius:17px;border:1px solid var(--line);background:transparent;color:var(--textsoft);font-size:13px}
 .chip.on{background:var(--text);color:var(--bg);border-color:var(--text);font-weight:600}
+.sep{width:1px;height:22px;background:var(--line);margin:0 6px}
 .tablebox{overflow-x:auto;background:var(--card);border:1px solid var(--hi);border-radius:18px}
 table{width:100%;min-width:820px;border-collapse:collapse;font-size:14px}
 th{text-align:left;color:var(--muted);font-size:12px;font-weight:500;padding:14px 16px}
@@ -48,13 +51,16 @@ td{padding:14px 16px;border-top:1px solid var(--hi);vertical-align:top}
 tr.new td{background:#20222A}
 .tag{display:inline-block;padding:3px 8px;border-radius:6px;font-size:12px;font-weight:600;white-space:nowrap}
 .t-fallo{background:var(--coralbg);color:var(--coralsoft)}.t-pregunta{background:var(--amberbg);color:var(--amber)}.t-idea{background:var(--bluebg);color:var(--blue)}.t-otro{background:var(--hi);color:var(--textsoft)}
+.s-juego{background:#1A2A12;color:var(--lime)}.s-proxima{background:var(--bluebg);color:var(--blue)}.s-retirada{background:var(--hi);color:var(--muted)}.s-sale{background:var(--amberbg);color:var(--amber)}
 .msg{max-width:360px;white-space:pre-wrap}.q{color:var(--textsoft);font-size:13px;margin-top:4px}
 .where{font-size:12px;color:var(--textsoft)}
 .when{color:var(--muted);white-space:nowrap}
-.actions{display:flex;gap:6px}
+.actions{display:flex;gap:6px;flex-wrap:wrap}
 .btn{height:34px;padding:0 12px;border-radius:10px;border:1px solid var(--line);background:transparent;color:var(--text);font-size:13px}
 .btn.primary{background:var(--lime);color:var(--limeink);border:0;font-weight:600}
+.btn.danger{border-color:#5A2A23;color:var(--coralsoft)}
 .btn.big{height:48px;padding:0 18px;border-radius:14px;font-size:15px}
+.btn:disabled{opacity:.5;cursor:default}
 .empty{padding:28px;text-align:center;color:var(--muted)}
 .center{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px}
 .login{width:100%;max-width:380px;background:var(--card);border:1px solid var(--hi);border-radius:22px;padding:24px;display:flex;flex-direction:column;gap:12px}
@@ -62,6 +68,29 @@ tr.new td{background:#20222A}
 .login input{height:44px;border-radius:12px;border:1px solid var(--line);background:var(--bg);color:var(--text);padding:0 12px;font:inherit}
 .err{color:var(--coralsoft);font-size:13px;min-height:18px}
 .hidden{display:none!important}
+.ans{font-family:'GeistMono',ui-monospace,monospace;letter-spacing:.04em;white-space:nowrap}
+.small{font-size:12px;color:var(--muted)}
+select,.field input,.field textarea{background:var(--bg);color:var(--text);border:1px solid var(--line);border-radius:10px;font:inherit;font-size:14px}
+select{height:34px;padding:0 10px}
+dialog{width:min(760px,100vw - 24px);max-height:calc(100vh - 24px);padding:0;border:1px solid var(--hi);border-radius:20px;background:var(--card);color:var(--text)}
+dialog::backdrop{background:rgba(0,0,0,.6)}
+.ed{padding:22px;display:flex;flex-direction:column;gap:14px}
+.ed h2{margin:0;font-size:24px}
+.row{display:flex;flex-wrap:wrap;gap:12px}
+.field{display:flex;flex-direction:column;gap:6px;font-size:13px;color:var(--textsoft);flex:1 1 160px}
+.field input,.field textarea{padding:10px 12px;min-height:40px}
+.field textarea{resize:vertical;min-height:64px}
+.field.wide{flex-basis:100%}
+.upper{text-transform:uppercase}
+.clue{display:flex;gap:8px;align-items:center}
+.clue input{flex:1;min-width:0;height:38px;padding:0 10px;background:var(--bg);color:var(--text);border:1px solid var(--line);border-radius:10px;font:inherit;font-size:14px}
+.clue .n{width:26px;text-align:right;color:var(--muted);font-size:12px}
+.clue .x{width:34px;padding:0}
+.clues{display:flex;flex-direction:column;gap:6px;max-height:44vh;overflow:auto;padding-right:4px}
+.notes{display:flex;flex-direction:column;gap:6px;font-size:13px}
+.notes .e{color:var(--coralsoft)}.notes .w{color:var(--amber)}
+.edbar{display:flex;flex-wrap:wrap;gap:8px;justify-content:flex-end;border-top:1px solid var(--hi);padding-top:14px}
+.edbar .left{margin-right:auto;display:flex;gap:8px}
 </style>
 </head>
 <body>
@@ -83,41 +112,78 @@ tr.new td{background:#20222A}
 <div id="app" class="layout hidden">
   <nav aria-label="Panel">
     <div class="brand"><span class="tiles"><span style="background:#B6F25C"></span><span style="background:#6E8BFF"></span><span style="background:#FFC24B"></span><span style="background:#FF6A57"></span></span><b class="display" style="font-size:20px">Foso</b><span class="mono" style="font-size:11px;color:#FFB3A7">ADMIN</span></div>
-    <a class="navitem on" href="#">Reportes<span class="badge" id="navBadge">0</span></a>
+    <a class="navitem on" href="#reportes" data-view="reportes">Reportes<span class="badge" id="navBadge">0</span></a>
+    <a class="navitem" href="#preguntas" data-view="preguntas">Preguntas</a>
     <a class="navitem" href="/">Volver a la web</a>
     <button type="button" class="navitem btn" id="logout" style="border:0;text-align:left">Cerrar sesión</button>
   </nav>
   <main>
-    <div class="top">
-      <div><h1>Reportes</h1><span class="sub">Lo que envían los jugadores desde Perfil › Reportar</span></div>
-      <label class="search"><span class="hidden">Buscar</span><input type="search" id="q" placeholder="Buscar en reportes" aria-label="Buscar en reportes"></label>
-    </div>
-    <div class="kpis">
-      <div class="kpi hot"><span>Nuevos</span><b id="kNew">—</b></div>
-      <div class="kpi"><span>Jugadores</span><b id="kPlayers">—</b></div>
-      <div class="kpi"><span>Activos 7 días</span><b id="kActive">—</b></div>
-      <div class="kpi"><span>Partidas 7 días</span><b id="kGames">—</b></div>
-    </div>
-    <div class="filters" role="tablist" aria-label="Estado">
-      <button type="button" class="chip on" data-estado="nuevo" role="tab">Nuevos</button>
-      <button type="button" class="chip" data-estado="visto" role="tab">Vistos</button>
-      <button type="button" class="chip" data-estado="resuelto" role="tab">Resueltos</button>
-      <button type="button" class="chip" data-estado="descartado" role="tab">Descartados</button>
-      <button type="button" class="chip" data-estado="" role="tab">Todos</button>
-    </div>
-    <div class="tablebox">
-      <table>
-        <thead><tr><th>Tipo</th><th>Mensaje</th><th>Dónde</th><th>Jugador</th><th>Cuándo</th><th>Acciones</th></tr></thead>
-        <tbody id="rows"></tbody>
-      </table>
-      <div class="empty hidden" id="empty">Nada por aquí.</div>
-    </div>
+    <section id="vReportes">
+      <div class="top">
+        <div><h1>Reportes</h1><span class="sub">Lo que envían los jugadores desde Perfil › Reportar</span></div>
+        <label class="search"><span class="hidden">Buscar</span><input type="search" id="q" placeholder="Buscar en reportes" aria-label="Buscar en reportes"></label>
+      </div>
+      <div class="kpis">
+        <div class="kpi hot"><span>Nuevos</span><b id="kNew">—</b></div>
+        <div class="kpi"><span>Jugadores</span><b id="kPlayers">—</b></div>
+        <div class="kpi"><span>Activos 7 días</span><b id="kActive">—</b></div>
+        <div class="kpi"><span>Partidas 7 días</span><b id="kGames">—</b></div>
+      </div>
+      <div class="filters" role="tablist" aria-label="Estado">
+        <button type="button" class="chip on" data-estado="nuevo" role="tab">Nuevos</button>
+        <button type="button" class="chip" data-estado="visto" role="tab">Vistos</button>
+        <button type="button" class="chip" data-estado="resuelto" role="tab">Resueltos</button>
+        <button type="button" class="chip" data-estado="descartado" role="tab">Descartados</button>
+        <button type="button" class="chip" data-estado="" role="tab">Todos</button>
+      </div>
+      <div class="tablebox">
+        <table>
+          <thead><tr><th>Tipo</th><th>Mensaje</th><th>Dónde</th><th>Jugador</th><th>Cuándo</th><th>Acciones</th></tr></thead>
+          <tbody id="rows"></tbody>
+        </table>
+        <div class="empty hidden" id="empty">Nada por aquí.</div>
+      </div>
+    </section>
+
+    <section id="vPreguntas" class="hidden">
+      <div class="top">
+        <div><h1>Preguntas</h1><span class="sub">Lo nuevo entra en juego mañana para que todos tengan el mismo banco cada día</span></div>
+        <label class="search"><span class="hidden">Buscar</span><input type="search" id="pq" placeholder="Buscar pregunta, respuesta o #id" aria-label="Buscar preguntas"></label>
+        <button type="button" class="btn big primary" id="nueva">Nueva</button>
+      </div>
+      <div class="kpis">
+        <div class="kpi"><span>Letras en juego</span><b id="kL">—</b></div>
+        <div class="kpi"><span>Tríos en juego</span><b id="kT">—</b></div>
+        <div class="kpi"><span>Entran mañana o después</span><b id="kP">—</b></div>
+        <div class="kpi"><span>Retiradas</span><b id="kR">—</b></div>
+      </div>
+      <div class="filters">
+        <button type="button" class="chip on" data-modo="letras">Letras</button>
+        <button type="button" class="chip" data-modo="trios">Entre tres</button>
+        <span class="sep" aria-hidden="true"></span>
+        <button type="button" class="chip on" data-pest="">Todas</button>
+        <button type="button" class="chip" data-pest="juego">En juego</button>
+        <button type="button" class="chip" data-pest="proxima">Próximas</button>
+        <button type="button" class="chip" data-pest="retirada">Retiradas</button>
+        <span class="sep" aria-hidden="true"></span>
+        <label><span class="hidden">Categoría</span><select id="pcat" aria-label="Categoría"><option value="">Todas las categorías</option></select></label>
+      </div>
+      <div class="tablebox">
+        <table>
+          <thead id="phead"></thead>
+          <tbody id="prows"></tbody>
+        </table>
+        <div class="empty hidden" id="pempty">Nada por aquí.</div>
+      </div>
+    </section>
   </main>
 </div>
 
 <div id="denied" class="center hidden">
   <div class="login"><h1 style="font-size:24px">Sin permiso</h1><p class="sub" id="deniedMsg">Tu cuenta no tiene rol admin.</p><button type="button" class="btn big" id="logout2">Cerrar sesión</button></div>
 </div>
+
+<dialog id="ed" aria-labelledby="edTitle"><form method="dialog" class="ed" id="edForm"></form></dialog>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
 <script>
@@ -146,6 +212,14 @@ function el(tag, cls, text) {
   if (text != null) e.textContent = text;
   return e;
 }
+function btn(label, cls, onclick) {
+  const b = el('button', 'btn' + (cls ? ' ' + cls : ''), label);
+  b.type = 'button';
+  b.onclick = onclick;
+  return b;
+}
+
+// ---------------- Reportes ----------------
 
 function render() {
   const q = $('q').value.trim().toLowerCase();
@@ -162,6 +236,8 @@ function render() {
     const t4 = el('td', '', r.nombre || 'Jugador');
     const t5 = el('td', 'when', ago(r.created_at));
     const t6 = el('td'); const acts = el('div', 'actions');
+    const ref = /^([LT])(\d+)/.exec(ctx.ref || '');
+    if (ref) acts.append(btn('Ver pregunta', '', () => abrirRef(ref[1], Number(ref[2]))));
     if (r.estado !== 'resuelto') acts.append(action('Resuelto', 'resuelto', r, true));
     if (r.estado === 'nuevo') acts.append(action('Visto', 'visto', r));
     if (r.estado !== 'descartado') acts.append(action('Descartar', 'descartado', r));
@@ -172,14 +248,12 @@ function render() {
 }
 
 function action(label, to, r, primary) {
-  const b = el('button', 'btn' + (primary ? ' primary' : ''), label);
-  b.type = 'button';
-  b.onclick = async () => {
+  const b = btn(label, primary ? 'primary' : '', async () => {
     b.disabled = true;
     const { error } = await db.from('reportes').update({ estado: to }).eq('id', r.id);
     if (error) { alert('No se pudo cambiar: ' + error.message); b.disabled = false; return; }
     load();
-  };
+  });
   return b;
 }
 
@@ -196,6 +270,349 @@ async function load() {
   render();
 }
 
+// ---------------- Preguntas ----------------
+
+const CATS = ['Geografía', 'Historia', 'Ciencia', 'Arte y letras', 'Cine y TV', 'Música', 'Deporte', 'Naturaleza', 'Cultura general'];
+// Palabras que cambian según el país: aviso, no bloquea.
+const NO_NEUTRO = ['plátano', 'banana', 'aguacate', 'palta', 'portero', 'arquero', 'penalti', 'penal', 'pértiga', 'garrocha', 'tortilla de patatas', 'patata', 'mofeta', 'zorrillo', 'zorrino', 'testigo', 'estafeta', 'volante', 'gallito', 'ordenador', 'computadora', 'coche', 'carro', 'móvil', 'celular', 'zumo', 'jugo', 'gafas', 'anteojos', 'lentes', 'frigorífico', 'nevera', 'heladera', 'conducir', 'manejar', 'autobús', 'camión', 'piso', 'departamento', 'gasolina', 'nafta', 'bañador', 'traje de baño', 'cacahuete', 'maní', 'judías', 'frijoles', 'porotos', 'melocotón', 'durazno', 'fresa', 'frutilla', 'maíz', 'choclo', 'elote', 'jonrón'];
+const PAGE = 300;
+let banco = null;
+let modo = 'letras';
+let pest = '';
+
+const madrid = (d) => new Intl.DateTimeFormat('en-CA', { timeZone: 'Europe/Madrid', year: 'numeric', month: '2-digit', day: '2-digit' }).format(d);
+const hoy = () => madrid(new Date());
+const manana = () => { const [y, m, d] = hoy().split('-').map(Number); return new Date(Date.UTC(y, m - 1, d + 1)).toISOString().slice(0, 10); };
+const fecha = (iso) => new Date(iso + 'T12:00:00Z').toLocaleDateString('es-ES', { day: 'numeric', month: 'short', timeZone: 'UTC' });
+const plano = (s) => s.normalize('NFD').replace(/[̀-ͯ]/g, '').toUpperCase().trim();
+const palabrasDe = (s) => ' ' + s.toLowerCase().replace(/[\s!-/:-@[-`{-~«»¿¡“”‘’—…]+/g, ' ') + ' ';
+
+function estadoDe(r) {
+  const h = hoy();
+  if (r.baja && r.baja <= h) return { k: 'retirada', t: 'Retirada' };
+  if (r.alta > h) return { k: 'proxima', t: 'Entra el ' + fecha(r.alta) };
+  if (r.baja) return { k: 'sale', t: 'Sale el ' + fecha(r.baja) };
+  return { k: 'juego', t: 'En juego' };
+}
+
+async function fetchAll(table) {
+  const out = [];
+  for (let from = 0; ; from += 1000) {
+    const { data, error } = await db.from(table).select('*').order('id').range(from, from + 999);
+    if (error) throw error;
+    out.push(...data);
+    if (data.length < 1000) return out;
+  }
+}
+
+async function loadBanco() {
+  try {
+    const [letras, trios] = await Promise.all([fetchAll('preguntas_letras'), fetchAll('preguntas_trios')]);
+    banco = { letras, trios };
+  } catch (e) {
+    banco = { letras: [], trios: [] };
+    $('pempty').textContent = 'No se pudo leer el banco: ' + e.message + '. ¿Has ejecutado preguntas.sql?';
+  }
+  renderPreguntas();
+}
+
+function renderPreguntas() {
+  if (!banco) return;
+  const cuenta = (list, k) => list.filter((r) => estadoDe(r).k === k).length;
+  const enJuego = (list) => list.filter((r) => ['juego', 'sale'].includes(estadoDe(r).k)).length;
+  $('kL').textContent = fmt(enJuego(banco.letras));
+  $('kT').textContent = fmt(enJuego(banco.trios));
+  $('kP').textContent = fmt(cuenta(banco.letras, 'proxima') + cuenta(banco.trios, 'proxima'));
+  $('kR').textContent = fmt(cuenta(banco.letras, 'retirada') + cuenta(banco.trios, 'retirada'));
+
+  const q = $('pq').value.trim();
+  const qn = plano(q);
+  const idq = /^#?(\d+)$/.exec(q);
+  const cat = $('pcat').value;
+  const src = modo === 'letras' ? banco.letras : banco.trios;
+  const list = src.filter((r) => {
+    if (cat && r.categoria !== cat) return false;
+    const st = estadoDe(r).k;
+    if (pest === 'juego' && !['juego', 'sale'].includes(st)) return false;
+    if (pest && pest !== 'juego' && st !== pest) return false;
+    if (!q) return true;
+    if (idq) return r.id === Number(idq[1]);
+    const texto = modo === 'letras' ? r.pregunta + ' ' + r.respuesta : r.palabras.join(' ') + ' ' + r.pistas.map((p) => p[0]).join(' ');
+    return plano(texto).includes(qn);
+  }).sort((a, b) => b.id - a.id);
+
+  const head = $('phead');
+  head.replaceChildren();
+  const hr = el('tr');
+  const cols = modo === 'letras' ? ['#', 'Categoría', 'Pregunta', 'Respuesta', 'Dif.', 'Estado', ''] : ['#', 'Categoría', 'Palabras', 'Pistas', 'Estado', ''];
+  cols.forEach((c) => hr.append(el('th', '', c)));
+  head.append(hr);
+
+  const body = $('prows');
+  body.replaceChildren();
+  for (const r of list.slice(0, PAGE)) {
+    const tr = el('tr');
+    const st = estadoDe(r);
+    tr.append(el('td', 'mono small', r.id), el('td', 'small', r.categoria));
+    if (modo === 'letras') {
+      tr.append(el('td', 'msg', r.pregunta), el('td', 'ans', r.respuesta), el('td', 'mono', r.dificultad));
+    } else {
+      const c = [0, 0, 0];
+      r.pistas.forEach((p) => c[p[1]]++);
+      tr.append(el('td', 'ans', r.palabras.join(' · ')), el('td', 'small', `${r.pistas.length} (${c.join(' / ')})`));
+    }
+    const ts = el('td'); ts.append(el('span', 'tag s-' + st.k, st.t)); tr.append(ts);
+    const ta = el('td'); ta.append(btn('Editar', '', () => (modo === 'letras' ? editarLetra(r) : editarTrio(r)))); tr.append(ta);
+    body.append(tr);
+  }
+  $('pempty').classList.toggle('hidden', list.length > 0);
+  if (list.length > PAGE) {
+    const tr = el('tr'); const td = el('td', 'small', `Mostrando ${PAGE} de ${fmt(list.length)}. Afina la búsqueda para ver el resto.`);
+    td.colSpan = cols.length; tr.append(td); body.append(tr);
+  }
+}
+
+// ---------- editor ----------
+
+function campo(label, input, cls) {
+  const f = el('label', 'field' + (cls ? ' ' + cls : ''));
+  f.append(el('span', '', label), input);
+  return f;
+}
+function selectCat(v) {
+  const s = el('select');
+  CATS.forEach((c) => { const o = el('option', '', c); o.value = c; o.selected = c === v; s.append(o); });
+  return s;
+}
+function inputFecha(v, editable) {
+  const i = el('input');
+  i.type = 'date'; i.value = v; i.min = manana(); i.disabled = !editable;
+  return i;
+}
+function abrir(nodos) {
+  const f = $('edForm');
+  f.replaceChildren(...nodos);
+  if (!$('ed').open) $('ed').showModal();
+}
+function cerrar() { $('ed').close(); }
+function pintarNotas(box, errores, avisos) {
+  box.replaceChildren(...errores.map((t) => el('div', 'e', '✕ ' + t)), ...avisos.map((t) => el('div', 'w', '! ' + t)));
+}
+function avisoNeutro(texto) {
+  const p = palabrasDe(texto);
+  const hit = NO_NEUTRO.filter((w) => p.includes(' ' + w + ' '));
+  return hit.length ? [`Puede cambiar según el país: ${hit.join(', ')}`] : [];
+}
+
+function editarLetra(r) {
+  const nueva = !r;
+  r = r || { categoria: CATS[0], pregunta: '', respuesta: '', dificultad: 1, alta: manana(), baja: null, nota: '' };
+  const st = nueva ? null : estadoDe(r);
+  const cat = selectCat(r.categoria);
+  const preg = el('textarea'); preg.value = r.pregunta; preg.maxLength = 160; preg.required = true;
+  const resp = el('input', 'upper ans'); resp.value = r.respuesta; resp.autocomplete = 'off';
+  const dif = el('select');
+  [[1, 'Fácil'], [2, 'Media'], [3, 'Difícil']].forEach(([v, t]) => { const o = el('option', '', `${v} · ${t}`); o.value = v; o.selected = v === r.dificultad; dif.append(o); });
+  const alta = inputFecha(r.alta, nueva || r.alta > hoy());
+  const nota = el('input'); nota.value = r.nota || ''; nota.placeholder = 'Solo para el panel';
+  const notas = el('div', 'notes');
+  const guardar = btn(nueva ? 'Crear' : 'Guardar', 'primary');
+
+  const validar = () => {
+    resp.value = resp.value.toUpperCase().replace(/\s+/g, ' ').replace(/^ /, '');
+    const p = preg.value.trim(), a = resp.value.trim(), errores = [], avisos = [];
+    if (p.length < 5) errores.push('La pregunta es demasiado corta.');
+    const n = a.replace(/ /g, '').length;
+    if (n < 2 || n > 16) errores.push(`La respuesta tiene ${n} letras: tiene que tener entre 2 y 16 (sin contar espacios).`);
+    if (/[-'’]/.test(a)) errores.push('La respuesta no puede llevar guiones ni apóstrofos.');
+    if (/\d/.test(a)) avisos.push('La respuesta lleva números: en el tablero solo hay letras.');
+    if (alta.value < manana() && !alta.disabled) errores.push('La fecha de alta tiene que ser de mañana en adelante.');
+    const otras = banco.letras.filter((x) => x.id !== r.id);
+    const igualPreg = otras.find((x) => plano(x.pregunta) === plano(p));
+    if (igualPreg) errores.push(`Ya existe la misma pregunta (#${igualPreg.id}).`);
+    const mismas = otras.filter((x) => a && plano(x.respuesta) === plano(a) && !(x.baja && x.baja <= hoy()));
+    if (mismas.length) avisos.push(`Misma respuesta en ${mismas.map((x) => `#${x.id} «${x.pregunta}»`).join('; ')}. Si es el mismo dato, sobra.`);
+    avisos.push(...avisoNeutro(p + ' ' + a));
+    if (!nueva && ['juego', 'sale'].includes(st.k) && (cat.value !== r.categoria || Number(dif.value) !== r.dificultad)) {
+      avisos.push('Cambiar categoría o dificultad de una pregunta en juego cambia el reparto de hoy en los móviles que sincronicen. Mejor hacerlo de noche.');
+    }
+    pintarNotas(notas, errores, avisos);
+    guardar.disabled = errores.length > 0;
+    return errores.length === 0;
+  };
+  [preg, resp, dif, cat, alta].forEach((x) => x.addEventListener('input', validar));
+
+  guardar.onclick = async () => {
+    if (!validar()) return;
+    guardar.disabled = true;
+    const fila = { categoria: cat.value, pregunta: preg.value.trim(), respuesta: resp.value.trim(), dificultad: Number(dif.value), nota: nota.value.trim() };
+    if (!alta.disabled) fila.alta = alta.value;
+    const res = nueva ? await db.from('preguntas_letras').insert(fila).select().single() : await db.from('preguntas_letras').update(fila).eq('id', r.id).select().single();
+    if (res.error) { pintarNotas(notas, [res.error.message], []); guardar.disabled = false; return; }
+    reemplazar('letras', res.data);
+    cerrar();
+  };
+
+  const h = el('h2', '', nueva ? 'Nueva pregunta de letras' : `Pregunta #${r.id}`); h.id = 'edTitle';
+  const fila1 = el('div', 'row');
+  fila1.append(campo('Categoría', cat), campo('Dificultad', dif), campo('Entra en juego', alta));
+  const nodos = [h];
+  if (st) nodos.push(el('div', 'small', st.t));
+  nodos.push(fila1, campo('Pregunta', preg, 'wide'), campo('Respuesta', resp, 'wide'), campo('Nota', nota, 'wide'), notas,
+    barra(nueva ? null : r, 'preguntas_letras', 'letras', guardar));
+  abrir(nodos);
+  validar();
+  preg.focus();
+}
+
+function editarTrio(r) {
+  const nueva = !r;
+  r = r || { categoria: CATS[0], palabras: ['', '', ''], pistas: [], alta: manana(), baja: null, nota: '' };
+  const st = nueva ? null : estadoDe(r);
+  const fijas = nueva ? 0 : r.pistas.length;
+  const cat = selectCat(r.categoria);
+  const ws = r.palabras.map((w) => { const i = el('input', 'upper ans'); i.value = w; i.autocomplete = 'off'; return i; });
+  const alta = inputFecha(r.alta, nueva || r.alta > hoy());
+  const nota = el('input'); nota.value = r.nota || ''; nota.placeholder = 'Solo para el panel';
+  const lista = el('div', 'clues');
+  const cont = el('div', 'small');
+  const notas = el('div', 'notes');
+  const guardar = btn(nueva ? 'Crear' : 'Guardar', 'primary');
+  const filas = [];
+
+  const opciones = (sel, idx) => {
+    sel.replaceChildren();
+    ws.forEach((w, k) => { const o = el('option', '', `${'ABC'[k]} · ${w.value || '—'}`); o.value = k; o.selected = k === idx; sel.append(o); });
+  };
+  const addFila = (texto, idx, fija) => {
+    const fila = el('div', 'clue');
+    const n = el('span', 'n', filas.length + 1);
+    const t = el('input'); t.value = texto; t.setAttribute('aria-label', 'Pista ' + (filas.length + 1));
+    const s = el('select'); s.setAttribute('aria-label', 'Respuesta de la pista'); opciones(s, idx);
+    fila.append(n, t, s);
+    const item = { fila, t, s, fija, alta: null };
+    if (!fija) fila.append(btn('✕', 'x', () => { filas.splice(filas.indexOf(item), 1); fila.remove(); renum(); validar(); }));
+    else fila.append(el('span', 'x'));
+    [t, s].forEach((x) => x.addEventListener('input', () => validar()));
+    filas.push(item); lista.append(fila);
+    return item;
+  };
+  const renum = () => filas.forEach((f, k) => { f.fila.firstChild.textContent = k + 1; });
+  r.pistas.forEach((p) => { const it = addFila(p[0], p[1], true); it.alta = p[2] || null; });
+  if (nueva) for (let k = 0; k < 10; k++) addFila('', k % 3, false);
+
+  const validar = () => {
+    const pal = ws.map((w) => w.value.trim());
+    const errores = [], avisos = [];
+    if (pal.some((w) => w.length < 2)) errores.push('Faltan palabras.');
+    if (new Set(pal.map(plano)).size < 3) errores.push('Las tres palabras tienen que ser distintas.');
+    const usadas = filas.filter((f) => f.t.value.trim());
+    if (filas.some((f) => !f.t.value.trim())) errores.push('Hay pistas vacías: rellénalas o quítalas.');
+    const c = [0, 0, 0];
+    usadas.forEach((f) => c[Number(f.s.value)]++);
+    cont.textContent = `${usadas.length} pistas · ${pal.map((w, k) => `${w || 'ABC'[k]}: ${c[k]}`).join(' · ')}`;
+    if (usadas.length < 10) errores.push(`Hacen falta al menos 10 pistas (hay ${usadas.length}).`);
+    if (c.some((x) => x < 3)) errores.push('Cada palabra necesita al menos 3 pistas.');
+    const vistos = new Set();
+    usadas.forEach((f, k) => {
+      const t = f.t.value.trim(), w = pal[Number(f.s.value)];
+      if (vistos.has(t.toLowerCase())) errores.push(`Pista repetida: «${t}».`);
+      vistos.add(t.toLowerCase());
+      if (w && palabrasDe(t).includes(' ' + w.toLowerCase() + ' ')) errores.push(`La pista ${k + 1} lleva su propia respuesta (${w}).`);
+    });
+    if (alta.value < manana() && !alta.disabled) errores.push('La fecha de alta tiene que ser de mañana en adelante.');
+    const clave = pal.map(plano).sort().join('|');
+    const igual = banco.trios.find((x) => x.id !== r.id && x.palabras.map(plano).sort().join('|') === clave);
+    if (igual) (nueva ? errores : avisos).push(`Ya existe este trío (#${igual.id}). Añade las pistas ahí.`);
+    if (!nueva && pal.some((w, k) => w !== r.palabras[k])) avisos.push('Has cambiado palabras de un trío existente: revisa que todas las pistas sigan encajando.');
+    if (!nueva && filas.some((f, k) => k < fijas && Number(f.s.value) !== r.pistas[k][1])) avisos.push('Has cambiado la respuesta de una pista que ya existía.');
+    avisos.push(...avisoNeutro(pal.join(' ') + ' ' + usadas.map((f) => f.t.value).join(' ')));
+    if (!nueva && filas.length > fijas && ['juego', 'sale'].includes(st.k)) avisos.push('Las pistas nuevas entran en juego mañana.');
+    pintarNotas(notas, errores, avisos);
+    guardar.disabled = errores.length > 0;
+    return errores.length === 0;
+  };
+  [cat, alta].forEach((x) => x.addEventListener('input', validar));
+  ws.forEach((w) => w.addEventListener('input', () => {
+    w.value = w.value.toUpperCase().replace(/\s+/g, ' ').replace(/^ /, '');
+    filas.forEach((f) => opciones(f.s, Number(f.s.value)));
+    validar();
+  }));
+
+  guardar.onclick = async () => {
+    if (!validar()) return;
+    guardar.disabled = true;
+    const pistas = filas.map((f) => (f.alta ? [f.t.value.trim(), Number(f.s.value), f.alta] : [f.t.value.trim(), Number(f.s.value)]));
+    const fila = { categoria: cat.value, palabras: ws.map((w) => w.value.trim()), pistas, nota: nota.value.trim() };
+    if (!alta.disabled) fila.alta = alta.value;
+    const res = nueva ? await db.from('preguntas_trios').insert(fila).select().single() : await db.from('preguntas_trios').update(fila).eq('id', r.id).select().single();
+    if (res.error) { pintarNotas(notas, [res.error.message], []); guardar.disabled = false; return; }
+    reemplazar('trios', res.data);
+    cerrar();
+  };
+
+  const h = el('h2', '', nueva ? 'Nuevo trío' : `Trío #${r.id}`); h.id = 'edTitle';
+  const fila1 = el('div', 'row'); fila1.append(campo('Categoría', cat), campo('Entra en juego', alta));
+  const fila2 = el('div', 'row'); ws.forEach((w, k) => fila2.append(campo('Palabra ' + 'ABC'[k], w)));
+  const nodos = [h];
+  if (st) nodos.push(el('div', 'small', st.t + ' · las pistas que ya existen no se pueden quitar, solo corregir'));
+  nodos.push(fila1, fila2, cont, lista, btn('Añadir pista', '', () => { addFila('', 0, false).t.focus(); validar(); }), campo('Nota', nota, 'wide'), notas, barra(nueva ? null : r, 'preguntas_trios', 'trios', guardar));
+  abrir(nodos);
+  validar();
+  if (nueva) ws[0].focus();
+}
+
+function barra(r, tabla, clave, guardar) {
+  const bar = el('div', 'edbar');
+  const left = el('div', 'left');
+  if (r) {
+    const st = estadoDe(r).k;
+    if (st === 'retirada' || r.baja) {
+      left.append(btn('Volver a ponerla en juego', '', () => cambiarBaja(r, tabla, clave, null)));
+    } else {
+      left.append(btn('Retirar desde mañana', 'danger', () => {
+        if (confirm('Dejará de salir a partir de mañana. Las partidas grabadas que la usan siguen funcionando.')) cambiarBaja(r, tabla, clave, manana());
+      }));
+    }
+  }
+  bar.append(left, btn('Cancelar', '', cerrar), guardar);
+  return bar;
+}
+
+async function cambiarBaja(r, tabla, clave, baja) {
+  const { data, error } = await db.from(tabla).update({ baja }).eq('id', r.id).select().single();
+  if (error) { alert('No se pudo cambiar: ' + error.message); return; }
+  reemplazar(clave, data);
+  cerrar();
+}
+
+function reemplazar(clave, fila) {
+  const list = banco[clave];
+  const i = list.findIndex((x) => x.id === fila.id);
+  if (i >= 0) list[i] = fila; else list.push(fila);
+  renderPreguntas();
+}
+
+async function abrirRef(tipo, id) {
+  if (!banco) await loadBanco();
+  const r = (tipo === 'L' ? banco.letras : banco.trios).find((x) => x.id === id);
+  if (!r) { alert(`No encuentro ${tipo}${id} en el banco.`); return; }
+  tipo === 'L' ? editarLetra(r) : editarTrio(r);
+}
+
+// ---------------- navegación ----------------
+
+function vista() {
+  const v = location.hash === '#preguntas' ? 'preguntas' : 'reportes';
+  $('vReportes').classList.toggle('hidden', v !== 'reportes');
+  $('vPreguntas').classList.toggle('hidden', v !== 'preguntas');
+  document.querySelectorAll('nav [data-view]').forEach((a) => {
+    a.classList.toggle('on', a.dataset.view === v);
+    if (a.dataset.view === v) a.setAttribute('aria-current', 'page'); else a.removeAttribute('aria-current');
+  });
+  if (v === 'preguntas' && !banco) loadBanco();
+}
+
 async function start() {
   const { data: { session } } = await db.auth.getSession();
   if (!session) { show('login'); return; }
@@ -206,14 +623,31 @@ async function start() {
     return;
   }
   show('app');
+  vista();
   load();
 }
 
-document.querySelectorAll('.chip').forEach((c) => c.addEventListener('click', () => {
-  document.querySelectorAll('.chip').forEach((x) => x.classList.toggle('on', x === c));
+CATS.forEach((c) => { const o = el('option', '', c); o.value = c; $('pcat').append(o); });
+$('edForm').addEventListener('submit', (e) => e.preventDefault());
+document.querySelectorAll('[data-estado]').forEach((c) => c.addEventListener('click', () => {
+  document.querySelectorAll('[data-estado]').forEach((x) => x.classList.toggle('on', x === c));
   estado = c.dataset.estado;
   load();
 }));
+document.querySelectorAll('[data-modo]').forEach((c) => c.addEventListener('click', () => {
+  document.querySelectorAll('[data-modo]').forEach((x) => x.classList.toggle('on', x === c));
+  modo = c.dataset.modo;
+  renderPreguntas();
+}));
+document.querySelectorAll('[data-pest]').forEach((c) => c.addEventListener('click', () => {
+  document.querySelectorAll('[data-pest]').forEach((x) => x.classList.toggle('on', x === c));
+  pest = c.dataset.pest;
+  renderPreguntas();
+}));
+$('pq').addEventListener('input', renderPreguntas);
+$('pcat').addEventListener('change', renderPreguntas);
+$('nueva').onclick = () => (modo === 'letras' ? editarLetra(null) : editarTrio(null));
+window.addEventListener('hashchange', vista);
 $('q').addEventListener('input', render);
 $('google').onclick = () => db.auth.signInWithOAuth({ provider: 'google', options: { redirectTo: location.origin + '/admin/' } });
 $('loginForm').onsubmit = async (e) => {
