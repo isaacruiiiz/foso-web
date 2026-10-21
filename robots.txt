@@ -2,5 +2,6 @@ User-agent: *
 Allow: /
 Disallow: /liga/
 Disallow: /sala/
+Disallow: /admin/
 
 Sitemap: https://foso.pages.dev/sitemap.xml

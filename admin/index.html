@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Foso · Panel</title>
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<style>
+@font-face{font-family:"Bricolage";src:url("/assets/fuentes/bricolage-800.woff2") format("woff2");font-weight:800;font-display:swap}
+@font-face{font-family:"Geist";src:url("/assets/fuentes/geist-400.woff2") format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:"Geist";src:url("/assets/fuentes/geist-500.woff2") format("woff2");font-weight:500;font-display:swap}
+@font-face{font-family:"Geist";src:url("/assets/fuentes/geist-600.woff2") format("woff2");font-weight:600;font-display:swap}
+@font-face{font-family:"GeistMono";src:url("/assets/fuentes/geistmono-500.woff2") format("woff2");font-weight:500;font-display:swap}
+:root{--bg:#111216;--card:#1B1C22;--hi:#24262E;--line:#30333D;--soft:#262830;--text:#F4F3EE;--muted:#A3A6B1;--textsoft:#D8D9DE;--lime:#B6F25C;--limeink:#13210A;--amber:#FFC24B;--amberbg:#2A2410;--coral:#FF6A57;--coralsoft:#FF8A7A;--coralbg:#2A1512;--blue:#A9BBFF;--bluebg:#182040}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font-family:'Geist',system-ui,sans-serif}
+h1,h2,.display{font-family:'Bricolage',system-ui,sans-serif;font-weight:800;letter-spacing:-.01em}
+.mono{font-family:'GeistMono',ui-monospace,monospace}
+a{color:var(--lime)}
+button{font:inherit;cursor:pointer}
+.layout{display:flex;flex-wrap:wrap;min-height:100vh}
+nav{flex:1 1 220px;max-width:260px;padding:24px 16px;border-right:1px solid var(--hi);display:flex;flex-direction:column;gap:6px}
+.brand{display:flex;align-items:center;gap:8px;padding:0 8px 18px}
+.tiles{display:flex;gap:3px}.tiles span{width:14px;height:14px;border-radius:4px}
+.navitem{height:42px;padding:0 12px;border-radius:11px;display:flex;align-items:center;gap:10px;font-size:14px;color:var(--textsoft);text-decoration:none}
+.navitem.on{background:var(--hi);color:var(--text);font-weight:600}
+.badge{margin-left:auto;height:20px;min-width:20px;padding:0 7px;border-radius:10px;background:var(--coral);color:#2E0904;font-size:11px;display:flex;align-items:center;justify-content:center}
+main{flex:999 1 560px;min-width:0;padding:28px 32px 40px;display:flex;flex-direction:column;gap:20px}
+@media (max-width:700px){nav{max-width:none;border-right:0;border-bottom:1px solid var(--hi);flex-direction:row;flex-wrap:wrap;align-items:center}.brand{padding:0 8px 0 0}main{padding:20px 16px}}
+.top{display:flex;flex-wrap:wrap;gap:12px;align-items:flex-end}
+.top>div{flex:1 1 260px}
+h1{margin:0;font-size:32px}
+.sub{color:var(--muted);font-size:14px}
+.search{display:flex;align-items:center;gap:8px;height:42px;padding:0 12px;border-radius:12px;border:1px solid var(--line);background:var(--card);flex:0 1 280px}
+.search input{flex:1;min-width:0;background:transparent;border:0;color:var(--text);font:inherit;font-size:14px;outline:none}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px}
+.kpi{background:var(--card);border-radius:16px;padding:16px;display:flex;flex-direction:column;gap:4px}
+.kpi span{font-size:13px;color:var(--muted)}.kpi b{font-family:'Bricolage',sans-serif;font-size:30px}
+.kpi.hot{background:var(--coralbg);border:1px solid #5A2A23}.kpi.hot span{color:#FFB3A7}.kpi.hot b{color:var(--coralsoft)}
+.filters{display:flex;flex-wrap:wrap;gap:6px}
+.chip{height:34px;padding:0 14px;border-radius:17px;border:1px solid var(--line);background:transparent;color:var(--textsoft);font-size:13px}
+.chip.on{background:var(--text);color:var(--bg);border-color:var(--text);font-weight:600}
+.tablebox{overflow-x:auto;background:var(--card);border:1px solid var(--hi);border-radius:18px}
+table{width:100%;min-width:820px;border-collapse:collapse;font-size:14px}
+th{text-align:left;color:var(--muted);font-size:12px;font-weight:500;padding:14px 16px}
+td{padding:14px 16px;border-top:1px solid var(--hi);vertical-align:top}
+tr.new td{background:#20222A}
+.tag{display:inline-block;padding:3px 8px;border-radius:6px;font-size:12px;font-weight:600;white-space:nowrap}
+.t-fallo{background:var(--coralbg);color:var(--coralsoft)}.t-pregunta{background:var(--amberbg);color:var(--amber)}.t-idea{background:var(--bluebg);color:var(--blue)}.t-otro{background:var(--hi);color:var(--textsoft)}
+.msg{max-width:360px;white-space:pre-wrap}.q{color:var(--textsoft);font-size:13px;margin-top:4px}
+.where{font-size:12px;color:var(--textsoft)}
+.when{color:var(--muted);white-space:nowrap}
+.actions{display:flex;gap:6px}
+.btn{height:34px;padding:0 12px;border-radius:10px;border:1px solid var(--line);background:transparent;color:var(--text);font-size:13px}
+.btn.primary{background:var(--lime);color:var(--limeink);border:0;font-weight:600}
+.btn.big{height:48px;padding:0 18px;border-radius:14px;font-size:15px}
+.empty{padding:28px;text-align:center;color:var(--muted)}
+.center{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px}
+.login{width:100%;max-width:380px;background:var(--card);border:1px solid var(--hi);border-radius:22px;padding:24px;display:flex;flex-direction:column;gap:12px}
+.login label{display:flex;flex-direction:column;gap:6px;font-size:13px;color:var(--textsoft)}
+.login input{height:44px;border-radius:12px;border:1px solid var(--line);background:var(--bg);color:var(--text);padding:0 12px;font:inherit}
+.err{color:var(--coralsoft);font-size:13px;min-height:18px}
+.hidden{display:none!important}
+</style>
+</head>
+<body>
+
+<div id="login" class="center hidden">
+  <form class="login" id="loginForm">
+    <div class="brand"><span class="tiles"><span style="background:#B6F25C"></span><span style="background:#6E8BFF"></span><span style="background:#FFC24B"></span><span style="background:#FF6A57"></span></span><b class="display" style="font-size:20px">Foso</b><span class="mono" style="font-size:11px;color:#FFB3A7">ADMIN</span></div>
+    <h1 style="font-size:26px">Entrar al panel</h1>
+    <p class="sub" style="margin:0">Solo cuentas con rol admin.</p>
+    <button type="button" class="btn big primary" id="google">Entrar con Google</button>
+    <p class="sub" style="margin:4px 0 0;text-align:center">o con tu correo</p>
+    <label>Correo<input type="email" id="email" autocomplete="email" required></label>
+    <label>Contraseña<input type="password" id="password" autocomplete="current-password" required></label>
+    <button type="submit" class="btn big">Entrar</button>
+    <div class="err" id="loginErr" role="alert"></div>
+  </form>
+</div>
+
+<div id="app" class="layout hidden">
+  <nav aria-label="Panel">
+    <div class="brand"><span class="tiles"><span style="background:#B6F25C"></span><span style="background:#6E8BFF"></span><span style="background:#FFC24B"></span><span style="background:#FF6A57"></span></span><b class="display" style="font-size:20px">Foso</b><span class="mono" style="font-size:11px;color:#FFB3A7">ADMIN</span></div>
+    <a class="navitem on" href="#">Reportes<span class="badge" id="navBadge">0</span></a>
+    <a class="navitem" href="/">Volver a la web</a>
+    <button type="button" class="navitem btn" id="logout" style="border:0;text-align:left">Cerrar sesión</button>
+  </nav>
+  <main>
+    <div class="top">
+      <div><h1>Reportes</h1><span class="sub">Lo que envían los jugadores desde Perfil › Reportar</span></div>
+      <label class="search"><span class="hidden">Buscar</span><input type="search" id="q" placeholder="Buscar en reportes" aria-label="Buscar en reportes"></label>
+    </div>
+    <div class="kpis">
+      <div class="kpi hot"><span>Nuevos</span><b id="kNew">—</b></div>
+      <div class="kpi"><span>Jugadores</span><b id="kPlayers">—</b></div>
+      <div class="kpi"><span>Activos 7 días</span><b id="kActive">—</b></div>
+      <div class="kpi"><span>Partidas 7 días</span><b id="kGames">—</b></div>
+    </div>
+    <div class="filters" role="tablist" aria-label="Estado">
+      <button type="button" class="chip on" data-estado="nuevo" role="tab">Nuevos</button>
+      <button type="button" class="chip" data-estado="visto" role="tab">Vistos</button>
+      <button type="button" class="chip" data-estado="resuelto" role="tab">Resueltos</button>
+      <button type="button" class="chip" data-estado="descartado" role="tab">Descartados</button>
+      <button type="button" class="chip" data-estado="" role="tab">Todos</button>
+    </div>
+    <div class="tablebox">
+      <table>
+        <thead><tr><th>Tipo</th><th>Mensaje</th><th>Dónde</th><th>Jugador</th><th>Cuándo</th><th>Acciones</th></tr></thead>
+        <tbody id="rows"></tbody>
+      </table>
+      <div class="empty hidden" id="empty">Nada por aquí.</div>
+    </div>
+  </main>
+</div>
+
+<div id="denied" class="center hidden">
+  <div class="login"><h1 style="font-size:24px">Sin permiso</h1><p class="sub" id="deniedMsg">Tu cuenta no tiene rol admin.</p><button type="button" class="btn big" id="logout2">Cerrar sesión</button></div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+<script>
+const SUPABASE_URL = 'https://zydpfnidvsmmsxgfakcu.supabase.co';
+const SUPABASE_KEY = 'sb_publishable_Wty49hlHPHqHKXDFRisbTw_v45s_yzb';
+const db = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+const $ = (id) => document.getElementById(id);
+const show = (id) => ['login', 'app', 'denied'].forEach((x) => $(x).classList.toggle('hidden', x !== id));
+const TYPES = { fallo: 'Algo no va', pregunta: 'Pregunta mal', idea: 'Idea', otro: 'Otra cosa' };
+let estado = 'nuevo';
+let all = [];
+
+function ago(iso) {
+  const d = (Date.now() - new Date(iso).getTime()) / 60000;
+  if (d < 1) return 'ahora';
+  if (d < 60) return `hace ${Math.floor(d)} min`;
+  if (d < 1440) return `hace ${Math.floor(d / 60)} h`;
+  const days = Math.floor(d / 1440);
+  return days === 1 ? 'ayer' : `hace ${days} días`;
+}
+const fmt = (n) => (n == null ? '—' : Number(n).toLocaleString('es-ES'));
+
+function el(tag, cls, text) {
+  const e = document.createElement(tag);
+  if (cls) e.className = cls;
+  if (text != null) e.textContent = text;
+  return e;
+}
+
+function render() {
+  const q = $('q').value.trim().toLowerCase();
+  const list = all.filter((r) => !q || JSON.stringify(r).toLowerCase().includes(q));
+  const body = $('rows');
+  body.replaceChildren();
+  $('empty').classList.toggle('hidden', list.length > 0);
+  for (const r of list) {
+    const tr = el('tr', r.estado === 'nuevo' ? 'new' : '');
+    const ctx = r.contexto || {};
+    const t1 = el('td'); t1.append(el('span', 'tag t-' + (TYPES[r.tipo] ? r.tipo : 'otro'), TYPES[r.tipo] || r.tipo));
+    const t2 = el('td'); t2.append(el('div', 'msg', r.mensaje)); if (ctx.pregunta) t2.append(el('div', 'q', '«' + ctx.pregunta + '»'));
+    const t3 = el('td', 'where mono', [ctx.donde, ctx.ref, ctx.plataforma, ctx.version].filter(Boolean).join(' · '));
+    const t4 = el('td', '', r.nombre || 'Jugador');
+    const t5 = el('td', 'when', ago(r.created_at));
+    const t6 = el('td'); const acts = el('div', 'actions');
+    if (r.estado !== 'resuelto') acts.append(action('Resuelto', 'resuelto', r, true));
+    if (r.estado === 'nuevo') acts.append(action('Visto', 'visto', r));
+    if (r.estado !== 'descartado') acts.append(action('Descartar', 'descartado', r));
+    t6.append(acts);
+    tr.append(t1, t2, t3, t4, t5, t6);
+    body.append(tr);
+  }
+}
+
+function action(label, to, r, primary) {
+  const b = el('button', 'btn' + (primary ? ' primary' : ''), label);
+  b.type = 'button';
+  b.onclick = async () => {
+    b.disabled = true;
+    const { error } = await db.from('reportes').update({ estado: to }).eq('id', r.id);
+    if (error) { alert('No se pudo cambiar: ' + error.message); b.disabled = false; return; }
+    load();
+  };
+  return b;
+}
+
+async function load() {
+  const { data: sum } = await db.rpc('panel_resumen');
+  if (sum) {
+    $('kNew').textContent = fmt(sum.reportes_nuevos); $('navBadge').textContent = fmt(sum.reportes_nuevos);
+    $('kPlayers').textContent = fmt(sum.jugadores); $('kActive').textContent = fmt(sum.activos_7d); $('kGames').textContent = fmt(sum.partidas_7d);
+  }
+  let query = db.from('reportes').select('*').order('created_at', { ascending: false }).limit(300);
+  if (estado) query = query.eq('estado', estado);
+  const { data, error } = await query;
+  all = error ? [] : data;
+  render();
+}
+
+async function start() {
+  const { data: { session } } = await db.auth.getSession();
+  if (!session) { show('login'); return; }
+  const { data: isAdmin, error } = await db.rpc('es_admin');
+  if (error || !isAdmin) {
+    $('deniedMsg').textContent = error ? 'No se pudo comprobar el rol. ¿Has ejecutado reportes.sql?' : `${session.user.email || 'Tu cuenta'} no tiene rol admin.`;
+    show('denied');
+    return;
+  }
+  show('app');
+  load();
+}
+
+document.querySelectorAll('.chip').forEach((c) => c.addEventListener('click', () => {
+  document.querySelectorAll('.chip').forEach((x) => x.classList.toggle('on', x === c));
+  estado = c.dataset.estado;
+  load();
+}));
+$('q').addEventListener('input', render);
+$('google').onclick = () => db.auth.signInWithOAuth({ provider: 'google', options: { redirectTo: location.origin + '/admin/' } });
+$('loginForm').onsubmit = async (e) => {
+  e.preventDefault();
+  $('loginErr').textContent = '';
+  const { error } = await db.auth.signInWithPassword({ email: $('email').value, password: $('password').value });
+  if (error) { $('loginErr').textContent = 'Correo o contraseña incorrectos.'; return; }
+  start();
+};
+const logout = async () => { await db.auth.signOut(); show('login'); };
+$('logout').onclick = logout; $('logout2').onclick = logout;
+db.auth.onAuthStateChange((event) => { if (event === 'SIGNED_IN') start(); });
+start();
+</script>
+</body>
+</html>

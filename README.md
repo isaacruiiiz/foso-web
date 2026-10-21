@@ -22,6 +22,7 @@ Sin compilación ni dependencias: lo que hay en esta carpeta es lo que se public
 - `index.html` — portada con una pregunta de prueba jugable
 - `privacidad.html`, `borrar-cuenta.html` — páginas legales (las piden Google Play y App Store)
 - `liga.html` — destino de `/liga/*` (ver `_redirects`)
+- `tv/` — modo tele (Plató) compilado desde la app con `publicar_web.sh`; `/sala/CODIGO` lleva a unirse desde el móvil
 - `404.html` — página no encontrada
 - `_headers` — cabeceras de seguridad y caché
 - `assets/` — estilos, fuentes (Bricolage Grotesque y Geist, licencia OFL, servidas desde la propia web), iconos e imagen para compartir
